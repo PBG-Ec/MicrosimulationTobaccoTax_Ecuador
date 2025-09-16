@@ -1,7 +1,7 @@
 # MicrosimulationTobaccoTax_Ecuador
 
 R implementation of Maldonado (2022) model, evaluating the effect of tobacco tax increase in Ecuador on multiple Sustainable Development Goals (SDGs).
-Based on Extended Cost-Effectiveness Analysis for Health Policy Assessment (ECEA, see Vergeut 2016) and microsimluations, this model builds and analyses synthetic population data to explore the effect of tax increase on tobacco.
+Based on Extended Cost-Effectiveness Analysis for Health Policy Assessment (ECEA, see Verguet 2016) and microsimluations, this model builds and analyses synthetic population data to explore the effect of tax increase on tobacco.
 
 ## Microsimulation Approach
 
@@ -33,11 +33,11 @@ The simulation tracked effects across multiple domains, including:
 - Health
 - Poverty
 - Gender Equality
-- Reduced Inequalities
+- Inequalities
 
 
-### Key Outputs Modeled
+## Key Outputs Modeled
 
-- Reduction in smoking consumption behaviours 
+- Change in smoking consumption behaviours 
 - Lower healthcare costs and catastrophic expenditures
 - Improved equity and domestic resource mobilization
