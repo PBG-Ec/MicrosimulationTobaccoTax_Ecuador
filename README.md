@@ -14,18 +14,14 @@ Build a synthetic population that mirrors demographic and socioeconomic characte
 - **Behavioral Response Modeling:**  
   The simulation incorporated tobacco price elasticity (Mena 2024) to predict how different income groups would respond.
 
-- **Elasticity Split:**  
-  - 50% of the response would be smokers quitting (extensive margin)
-  - 50% would be reduced cigarette consumption among continuing smokers (intensive margin)
-
 
 ## Data Sources & Assumptions
 
 - **Synthetic Dataset vs. Real Survey Data:**  
-  The study used a synthetic dataset from Ecuador Survey.
+  The study used a synthetic dataset from Ecuador NCD and risk factor Survey.
 
-- **Healthcare costs and use **  
-  HC costs and use were compiled or borrowed from prior studies and.
+- **Healthcare costs and use**  
+  HC costs and use were compiled or borrowed from prior studies and local reference.
 
 ##  Impact Analysis
 
@@ -39,5 +35,5 @@ The simulation tracked effects across multiple domains, including:
 ## Key Outputs Modeled
 
 - Change in smoking consumption behaviours 
-- Lower healthcare costs and catastrophic expenditures
-- Improved equity and domestic resource mobilization
+- Healthcare costs and catastrophic expenditures
+- Averted deaths and domestic resource mobilization
