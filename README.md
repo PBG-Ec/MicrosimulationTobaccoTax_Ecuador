@@ -17,23 +17,16 @@ Build a synthetic population that mirrors demographic and socioeconomic characte
 
 ## Data Sources & Assumptions
 
-- **Synthetic Dataset vs. Real Survey Data:**  
-  The study used a synthetic dataset from Ecuador NCD and risk factor Survey.
+- **Synthetic Dataset**  
+  The study used a synthetic dataset generated based on Ecuador STEPS Survey.
 
 - **Healthcare costs and use**  
-  HC costs and use were compiled or borrowed from prior studies and local reference.
+  Healthcare costs and use across population were compiled from prior studies and local reference.
 
 ##  Impact Analysis
 
-The simulation tracked effects across multiple domains, including:
-- Health
-- Poverty
-- Gender Equality
-- Inequalities
-
+The simulation tracked effects across multiple indices, in Health, household economy, Gender Equality and  Inequalities.
 
 ## Key Outputs Modeled
 
-- Change in smoking consumption behaviours 
-- Healthcare costs and catastrophic expenditures
-- Averted deaths and domestic resource mobilization
+Change in smoking consumption behaviours were modelled and it's effect on Averted NCD related deaths, Healthcare costs, catastrophic expenditures and   domestic resource mobilization.
