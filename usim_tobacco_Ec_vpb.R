@@ -83,11 +83,11 @@ for(i in 1:length(simname_grad)){
   STaxVaAdvPre <- 0
   STaxVaAdvPos <- STaxVaAdvPre
   # Value Added Vat
-  STaxVaVatPre <- 0.15
+  STaxVaVatPre <- 0.15 
   STaxVaVatPos <- STaxVaVatPre
   # Total
-  STaxVaTotPre <- STaxVaSpePre + STaxVaAdvPre + STaxVaVatPre
-  STaxVaTotPos <- STaxVaSpePos + STaxVaAdvPos + STaxVaVatPos
+  STaxVaTotPre <- STaxVaSpePre + STaxVaAdvPre
+  STaxVaTotPos <- STaxVaSpePos + STaxVaAdvPos
   ## Rates
   # AdValorem (excise)
   STaxRaAdvPre <- 1
@@ -96,7 +96,7 @@ for(i in 1:length(simname_grad)){
   STaxRaVatPre <- 0.15
   STaxRaVatPos <- STaxRaVatPre
   # Pass-Through Specific (excise)
-  STaxPassSpePre <- 1.2
+  STaxPassSpePre <- 1.46
   STaxPassSpePos <- STaxPassSpePre
   ## Implicit Baseline Prices
   # Ibp Vat
@@ -114,8 +114,8 @@ for(i in 1:length(simname_grad)){
   SExwMinProRaPre <- 0.2
   SExwMinProRaPos <- SExwMinProRaPre
   # Manufacturing Profit
-  SExwManProPre <- SExwManCoPre*SExwMinProRaPre + (STaxPassSpePre-1)*STaxVaSpePre
-  SExwManProPos <- SExwManCoPos*SExwMinProRaPos + (STaxPassSpePos-1)*STaxVaSpePos
+  SExwManProPre <- SExwManCoPre*SExwMinProRaPre + (STaxPassSpePre - 1) * STaxVaSpePre
+  SExwManProPos <- SExwManCoPos*SExwMinProRaPos + (STaxPassSpePos - 1) * STaxVaSpePos
   # Price Exwork with no taxes (excise)
   SExwPriNoExciPre <- SExwManCoPre + SExwManProPre
   SExwPriNoExciPos <- SExwManCoPos + SExwManProPos
@@ -123,19 +123,41 @@ for(i in 1:length(simname_grad)){
   SExwProRaPre <- (SExwPriNoExciPre - SExwManCoPre) / SExwManCoPre
   SExwProRaPos <- (SExwPriNoExciPos - SExwManCoPos) / SExwManCoPos
   
+  
+  
+  
   ##### Price
-  # Price Exwork with Taxes
-  SPriPrExwTaxPre <- SExwPriNoExciPre + (STaxVaSpePre + STaxVaAdvPre + STaxVaVatPre)
-  SPriPrExwTaxPos <- SExwPriNoExciPos + (STaxVaSpePos + STaxVaAdvPos + STaxVaVatPos)
+  # Price Exwork with Taxes but without retail/distrib margin
+  SPriPrExwTaxPre <- 
+    (
+      (SExwManCoPre +  SExwManCoPre * SExwMinProRaPre) + 
+        (STaxPassSpePre * STaxVaSpePre )
+    ) * (1 + STaxVaVatPre)
+  
+  SPriPrExwTaxPos <- 
+    (
+      (SExwManCoPos +  SExwManCoPos * SExwMinProRaPos) + 
+        (STaxPassSpePos * STaxVaSpePos )
+    ) * (1 + STaxVaVatPos)
   # Distribution Margin
-  SPriDisMaPre <- 0.18
+  SPriDisMaPre <- 0.2
   SPriDisMaPos <- SPriDisMaPre
   # Retail Margin
-  SPriRetMaPre <- 0.19
+  SPriRetMaPre <- 0.2
   SPriRetMaPos <- SPriRetMaPre
   # Retail Price
-  SPriPrRetaPre <- SPriPrExwTaxPre*(1 + SPriDisMaPre + SPriRetMaPre)
-  SPriPrRetaPos <- SPriPrExwTaxPos*(1 + SPriDisMaPos + SPriRetMaPos)
+  SPriPrRetaPre <- 
+    (
+      (SExwManCoPre +  SExwManCoPre * SExwMinProRaPre) * 
+        (1 + SPriDisMaPre + SPriRetMaPre) + 
+        (STaxPassSpePre * STaxVaSpePre )
+    ) * (1 + STaxVaVatPre)
+  SPriPrRetaPos <- 
+    (
+      (SExwManCoPos +  SExwManCoPos * SExwMinProRaPos) * 
+        (1 + SPriDisMaPos + SPriRetMaPos) + 
+        (STaxPassSpePos * STaxVaSpePos )
+    ) * (1 + STaxVaVatPos)
   # Rounded
   SPriPrRetaPreRou <- round(SPriPrRetaPre, 2)
   SPriPrRetaPosRou <- round(SPriPrRetaPos, 2)
@@ -1162,4 +1184,5 @@ RTab$Before_tax[is.na(RTab$Before_tax)] <- "-"
 ############### Export results 
 writexl::write_xlsx(list(RTab=RTab,Indicadores_completos=tab0),
                     path = paste0(root,"ResultsTotalv4.4.xlsx"))
+
 
